@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<config>
+    <available-memory>
+        <memory name="main" size="128"/>
+        <memory name="virtual" size="512"/>
+    </available-memory>
+    <instruction-costs>
+        <instruction name="store" weight="2"/>
+        <instruction name="load" weight="2"/>
+        <instruction name="mov" weight="1"/>
+        <instruction name="add" weight="3"/>
+        <instruction name="sub" weight="3"/>
+        <instruction name="inc" weight="1"/>
+        <instruction name="dec" weight="1"/>
+        <instruction name="int 20h" weight="int"/>
+        <instruction name="int 09h" weight="int"/>
+        <instruction name="int 10h" weight="int"/>
+        <instruction name="jum" weight="2"/>
+        <instruction name="cmp" weight="2"/>
+        <instruction name="je" weight="2"/>
+        <instruction name="jne" weight="2"/>
+        <instruction name="push" weight="1"/>
+        <instruction name="pop" weight="1"/>
+        <instruction name="param" weight="3"/>
+    </instruction-costs>
+</config>
