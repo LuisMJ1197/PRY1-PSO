@@ -55,6 +55,9 @@ public class Loader {
                 for (int i = PCB.PCB_SIZE; i < PCB.PCB_SIZE + process.getProgramSize(); i++) {
                     savedMemory[i].setValue(process.getProcessCode()[i - PCB.PCB_SIZE]);
                 }
+                process.setLoaded(true);
+                process.getPcb().getStatus().setValue(PCB.READY);
+                
             }
         }
         for (os.process.Process process: Kernel.getInstance().getProcessor().getProcessList()) {

@@ -18,6 +18,7 @@ public class POP extends Instruction {
     public POP(Core core, Register reg) {
         this.core = core;
         this.reg = reg;
+        this.height = IInstruction.POP;
     }
     
     @Override

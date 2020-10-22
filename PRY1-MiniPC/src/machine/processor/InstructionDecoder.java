@@ -32,7 +32,7 @@ class InstructionDecoder {
         } else if (instruction.contains("DEC")) {
             return new DEC(core);
         } else if (instruction.contains("INT")) {
-            return new INT(core, Integer.parseInt(instruction.split(" ")[1].replace("h", "")));
+            return new INT(core, Integer.parseInt(instruction.split(" ")[1].replace("H", "")));
         } else if (instruction.contains("JUM")) {
             return new JUM(core, Integer.parseInt(instruction.split(" ")[1]));
         } else if (instruction.contains("JE")) {
@@ -65,15 +65,15 @@ class InstructionDecoder {
     
     static Register getRegister(Core core, String reg) {
         switch (reg) {
-            case "ac":
+            case "AC":
                 return core.getPCB().getAc();
-            case "ax":
+            case "AX":
                 return core.getPCB().getAx();
-            case "bx":
+            case "BX":
                 return core.getPCB().getBx();
-            case "cx":
+            case "CX":
                 return core.getPCB().getCx();
-            case "dx":
+            case "DX":
                 return core.getPCB().getDx();
             default: 
                 return null;

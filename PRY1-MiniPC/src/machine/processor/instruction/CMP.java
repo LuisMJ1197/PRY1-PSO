@@ -20,6 +20,7 @@ public class CMP extends Instruction {
         this.core = core;
         this.reg1 = reg1;
         this.reg2 = reg2;
+        this.height = IInstruction.CMP;
     }
     
     @Override

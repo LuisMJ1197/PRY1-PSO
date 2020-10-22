@@ -9,6 +9,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
+import machine.Kernel;
+import machine.io.Display;
 import machine.io.IODevice;
 import machine.io.IODeviceControllerListener;
 import machine.io.Keyboard;
@@ -17,17 +19,18 @@ import machine.io.Keyboard;
  *
  * @author Luism
  */
-public class DisplayConstroller implements KeyListener, IODeviceControllerListener {
-    private JTextArea display;
-    private IODevice keyboard;
+public class DisplayController implements KeyListener, IODeviceControllerListener {
+    private JTextArea displayTA;
+    private IODevice display;
     private JLabel processID;
     private boolean enabled = false;
     
-    public DisplayConstroller(JTextArea keyboard, JLabel processID) {
-        this.display = keyboard;
+    public DisplayController(JTextArea displayTA, JLabel processID) {
+        this.displayTA = displayTA;
         this.processID = processID;
-        this.keyboard.setControllerListener(this);
-        this.display.addKeyListener(this);
+        this.display = Kernel.getInstance().getDisplay();
+        this.display.setControllerListener(this);
+        this.displayTA.addKeyListener(this);
     }
 
     @Override
@@ -39,15 +42,9 @@ public class DisplayConstroller implements KeyListener, IODeviceControllerListen
     public void keyPressed(KeyEvent e) {
         if (this.enabled) {
             if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                this.keyboard.reset();
-                this.display.setText("");
+                this.display.reset();
+                this.displayTA.setText("");
                 this.enabled = false;
-            } else {
-                char keyChar = e.getKeyChar();
-                if (keyChar >= '0' && keyChar <= '9') {
-                    ((Keyboard) this.keyboard).addKey(Character.toString(keyChar));
-                }
-                this.display.setText(((Keyboard) this.keyboard).getText());
             }
         }
     }
@@ -60,6 +57,7 @@ public class DisplayConstroller implements KeyListener, IODeviceControllerListen
     @Override
     public void start(int processID) {
         this.processID.setText(Integer.toString(processID));
+        this.displayTA.setText(this.display.getEntry());
         this.enabled = true;
     }
 }

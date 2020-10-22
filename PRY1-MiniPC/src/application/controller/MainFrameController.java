@@ -35,6 +35,8 @@ public class MainFrameController implements ActionListener {
     private final CPUController cpuCore1Controller;
     private final CPUController cpuCore2Controller;
     private ProcessPanelController processPanelController;
+    private KeyboardController keyboardController;
+    private DisplayController displayController;
     
     public MainFrameController() {
         os = OperatingSystem.getInstance();
@@ -42,7 +44,9 @@ public class MainFrameController implements ActionListener {
         this.mainMemoryPanelController = new MemoryPanelController(Kernel.getInstance().getMainMemory(), this.view.mainPanel.mainMemoryPanel);
         this.diskMemoryPanelController = new MemoryPanelController(Kernel.getInstance().getDiskMemory(), this.view.mainPanel.virtualMemoryPanel);
         this.cpuCore1Controller = new CPUController(this.view.mainPanel.cPUCorePanel1, Kernel.getInstance().getProcessor().getCore1());
-        this.cpuCore2Controller = new CPUController(this.view.mainPanel.cPUCorePanel2, Kernel.getInstance().getProcessor().getCore1());
+        this.cpuCore2Controller = new CPUController(this.view.mainPanel.cPUCorePanel2, Kernel.getInstance().getProcessor().getCore2());
+        this.keyboardController = new KeyboardController(this.view.mainPanel.keyboardTF, this.view.mainPanel.keyboardProcessID);
+        this.displayController = new DisplayController(this.view.mainPanel.displayTA, this.view.mainPanel.displayProcessID);
     }
     
     @Override
@@ -81,6 +85,7 @@ public class MainFrameController implements ActionListener {
         if (Kernel.getInstance().getProcessor().getProcessList().isEmpty()) {
             return;
         }
+        Kernel.getInstance().getProcessor().start();
         processPanelController = new ProcessPanelController(Kernel.getInstance().getProcessor().getProcessList(), this.view.mainPanel.processListPanel);
         processPanelController.init();
         this.mainMemoryPanelController.update();
@@ -89,6 +94,7 @@ public class MainFrameController implements ActionListener {
         this.paintMemories();
         this.view.mainPanel.nextButton.setEnabled(true);
         this.view.mainPanel.openFilesButton.setEnabled(false);
+        
     }
     
     private void paintMemories() {
@@ -152,5 +158,6 @@ public class MainFrameController implements ActionListener {
         this.diskMemoryPanelController.update();
         this.cpuCore1Controller.update();
         this.cpuCore2Controller.update();
+        this.view.mainPanel.processorTimeLabel.setText(Integer.toString(Kernel.getInstance().getProcessor().getProcessTime()));
     }
 }

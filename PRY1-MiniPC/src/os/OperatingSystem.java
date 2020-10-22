@@ -15,7 +15,6 @@ import machine.Kernel;
 public class OperatingSystem {
     private Loader loader = new Loader();
     private MCompiler compiler = new MCompiler();
-    private Kernel kernel = Kernel.getInstance();
     private static OperatingSystem instance = new OperatingSystem();
     
     private OperatingSystem() {

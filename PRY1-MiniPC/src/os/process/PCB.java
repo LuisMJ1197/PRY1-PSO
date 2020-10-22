@@ -75,6 +75,7 @@ public class PCB {
         this.dx = array[DX_INDEX];
         this.dx.setValue(Register.ZERO);
         this.cpuNumber = array[CPUNUMBER_INDEX];
+        this.cpuNumber.setValue("-1");
         this.startTime = array[STARTTIME_INDEX];
         this.executingTime = array[EXECUTIONTIME_INDEX];
         this.listOfIO = array[IO_INDEX];
@@ -96,22 +97,6 @@ public class PCB {
 
     public int getSize() {
         return PCB.PCB_SIZE;
-    }
-    
-    public Register[] toArray() {
-        Register[] array = {
-            this.pid,
-            this.status,
-            this.pc, 
-            this.ac, 
-            this.ax, 
-            this.bx, 
-            this.cx, 
-            this.dx, 
-            this.cpuNumber, 
-            this.startTime, 
-            this.executingTime};
-        return array;
     }
 
     public Register getPc() {

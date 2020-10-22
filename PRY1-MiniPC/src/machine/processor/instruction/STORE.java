@@ -21,6 +21,7 @@ public class STORE extends Instruction {
         this.height = IInstruction.STORE;
         this.reg = reg;
         this.core = cpu;
+        this.height = IInstruction.STORE;
     }
     
     @Override

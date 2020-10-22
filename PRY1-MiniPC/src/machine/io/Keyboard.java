@@ -35,10 +35,10 @@ public class Keyboard implements IODevice {
     
     @Override
     public void reset() {
-        this.listener.callback(entry);
         this.entry = "";
         this.busy = false;
         this.processID = -1;
+        this.listener.callback(entry);
     }
     
     public void addKey(String ch) {
@@ -51,11 +51,17 @@ public class Keyboard implements IODevice {
 
     @Override
     public void setControllerListener(IODeviceControllerListener listener) {
-        controllerListener.start(this.processID);
+        this.controllerListener = listener;
     }
 
     @Override
     public void setListener(IODeviceListener listener) {
         this.listener = listener;
+    }
+    
+    
+    @Override
+    public String getEntry() {
+        return this.entry;
     }
 }

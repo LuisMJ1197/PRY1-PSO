@@ -8,6 +8,7 @@ package application.controller;
 import application.view.CPUCorePanel;
 import machine.Kernel;
 import machine.memory.Address;
+import machine.memory.Register;
 import machine.processor.Core;
 
 /**
@@ -29,7 +30,7 @@ public class CPUController {
             this.panel.irRegisterLabel.setText(Kernel.getInstance().getMMU().loadFromMemory(new Address(this.core.getPCB().getPc().getValue())));
             this.panel.processIdLabel.setText(this.core.getPCB().getPid().getValue());
         } else {
-            this.panel.irRegisterLabel.setText("");
+            this.panel.irRegisterLabel.setText(Register.EMPTY);
             this.panel.processIdLabel.setText("-1");
         }
     }

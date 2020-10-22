@@ -9,6 +9,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import machine.Kernel;
 import machine.io.IODevice;
 import machine.io.IODeviceControllerListener;
 import machine.io.Keyboard;
@@ -25,6 +26,7 @@ public class KeyboardController implements KeyListener, IODeviceControllerListen
     public KeyboardController(JTextField keyboard, JLabel processID) {
         this.keyboardTF = keyboard;
         this.processID = processID;
+        this.keyboard = Kernel.getInstance().getKeyboard();
         this.keyboard.setControllerListener(this);
         this.keyboardTF.addKeyListener(this);
     }
@@ -46,7 +48,6 @@ public class KeyboardController implements KeyListener, IODeviceControllerListen
                 if (keyChar >= '0' && keyChar <= '9') {
                     ((Keyboard) this.keyboard).addKey(Character.toString(keyChar));
                 }
-                this.keyboardTF.setText(((Keyboard) this.keyboard).getText());
             }
         }
     }

@@ -18,6 +18,7 @@ public class JUM extends Instruction {
     public JUM(Core core, int offset) {
         this.core = core;
         this.offset = offset;
+        this.height = IInstruction.JUM;
     }
     
     @Override

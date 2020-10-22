@@ -20,16 +20,21 @@ import machine.processor.Processor;
  * @author Luism
  */
 public class Kernel {
-    private Processor processor = new Processor();
-    private IMemory mainMemory = new Memory(Memory.MAIN_MEMORY_SIZE);
-    private IMemory diskMemory = new Memory(Memory.DISK_MEMORY_SIZE);
+    private Processor processor;
+    private IMemory mainMemory;
+    private IMemory diskMemory;
     private IMMU mmu;
     private static Kernel instance = new Kernel();
-    private IODevice keyboard = new Keyboard();
-    private IODevice display = new Display();
+    private IODevice keyboard;
+    private IODevice display;
     
     private Kernel() {
+        processor = new Processor();
+        mainMemory = new Memory(Memory.MAIN_MEMORY_SIZE);
+        diskMemory = new Memory(Memory.DISK_MEMORY_SIZE);
         mmu = new SimpleMMU(this.mainMemory, this.diskMemory);
+        keyboard = new Keyboard();
+        display = new Display();
     }
     
     public static Kernel getInstance() {

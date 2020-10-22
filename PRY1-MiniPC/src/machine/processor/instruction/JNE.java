@@ -18,6 +18,7 @@ public class JNE extends Instruction {
     public JNE(Core core, int offset) {
         this.core = core;
         this.offset = offset;
+        this.height = IInstruction.JNE;
     }
     
     @Override

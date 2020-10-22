@@ -18,6 +18,7 @@ public class PUSH extends Instruction {
     public PUSH(Core core, Register reg) {
         this.core = core;
         this.reg = reg;
+        this.height = IInstruction.PUSH;
     }
     
     @Override

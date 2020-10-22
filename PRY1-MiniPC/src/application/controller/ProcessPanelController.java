@@ -94,6 +94,7 @@ public class ProcessPanelController {
             procPanel.bxLabel.setText(proc.getPcb().getBx().getValue());
             procPanel.cxLabel.setText(proc.getPcb().getCx().getValue());
             procPanel.dxLabel.setText(proc.getPcb().getDx().getValue());
+            procPanel.cpuLabel.setText(proc.getPcb().getCpuNumber().getValue());
         }
     }
     

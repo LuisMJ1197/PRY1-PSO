@@ -21,7 +21,7 @@ public class MCompiler {
        "(INC|inc)",
        "(DEC|dec)",
        "(INT|int)\\s20(h|H)",
-       "(INT|int)\\s9(h|H)",
+       "(INT|int)\\s09(h|H)",
        "(INT|int)\\s10(h|H)",
        "JUM\\s(-)?(0|-?[1-9][0-9]*)",
        "(CMP|cmp)\\s[A-Da-d](X|x),(\\s)?[A-Da-d](X|x)",

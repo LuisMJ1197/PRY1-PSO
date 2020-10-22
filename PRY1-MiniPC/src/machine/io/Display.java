@@ -36,7 +36,6 @@ public class Display implements IODevice {
     @Override
     public void reset() {
         this.listener.callback("");
-        this.entry = "";
         this.busy = false;
         this.processID = -1;
     }
@@ -51,11 +50,16 @@ public class Display implements IODevice {
 
     @Override
     public void setControllerListener(IODeviceControllerListener listener) {
-        controllerListener.start(this.processID);
+        this.controllerListener = listener;
     }
 
     @Override
     public void setListener(IODeviceListener listener) {
         this.listener = listener;
+    }
+
+    @Override
+    public String getEntry() {
+        return this.entry;
     }
 }

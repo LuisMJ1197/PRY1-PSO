@@ -32,10 +32,12 @@ public class INT extends Instruction implements IODeviceListener {
         switch (value) {
             case PRINT:
                 ((Display) Kernel.getInstance().getDisplay()).addKey(core.getPCB().getDx().getValue());
+                Kernel.getInstance().getDisplay().setListener(this);
                 Kernel.getInstance().getDisplay().setBusy(Integer.parseInt(core.getPCB().getPid().getValue()));
                 this.movePc(1);
                 break;
             case READ:
+                Kernel.getInstance().getKeyboard().setListener(this);
                 Kernel.getInstance().getKeyboard().setBusy(Integer.parseInt(core.getPCB().getPid().getValue()));
                 this.movePc(1);
                 break;

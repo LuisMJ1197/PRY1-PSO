@@ -18,6 +18,7 @@ public class JE extends Instruction {
     public JE(Core core, int offset) {
         this.core = core;
         this.offset = offset;
+        this.height = IInstruction.JE;
     }
     
     @Override

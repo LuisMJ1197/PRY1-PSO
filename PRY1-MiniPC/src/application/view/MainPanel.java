@@ -49,16 +49,17 @@ public class MainPanel extends javax.swing.JPanel {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jTextField1 = new javax.swing.JTextField();
+        displayTA = new javax.swing.JTextArea();
+        keyboardTF = new javax.swing.JTextField();
         jPanel20 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         cPUCorePanel1 = new application.view.CPUCorePanel();
         cPUCorePanel2 = new application.view.CPUCorePanel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        processorTimeLabel = new javax.swing.JLabel();
         displayProcessID = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -67,7 +68,7 @@ public class MainPanel extends javax.swing.JPanel {
         jLabel19 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(233, 233, 233));
-        setPreferredSize(new java.awt.Dimension(1126, 735));
+        setPreferredSize(new java.awt.Dimension(1221, 735));
         setRequestFocusEnabled(false);
         setLayout(null);
 
@@ -122,7 +123,7 @@ public class MainPanel extends javax.swing.JPanel {
         jTabbedPane1.addTab("Virtual Memory", virtualMemoryPanel);
 
         add(jTabbedPane1);
-        jTabbedPane1.setBounds(810, 40, 301, 685);
+        jTabbedPane1.setBounds(910, 40, 301, 685);
 
         jTabbedPane2.setToolTipText("Process list");
         jTabbedPane2.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
@@ -157,17 +158,21 @@ public class MainPanel extends javax.swing.JPanel {
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel17.setText("DX");
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel4.setText("CPU");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -181,7 +186,8 @@ public class MainPanel extends javax.swing.JPanel {
                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel17)
-                .addContainerGap(118, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 885, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,7 +201,8 @@ public class MainPanel extends javax.swing.JPanel {
                     .addComponent(jLabel14)
                     .addComponent(jLabel15)
                     .addComponent(jLabel16)
-                    .addComponent(jLabel17))
+                    .addComponent(jLabel17)
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE))
         );
@@ -203,23 +210,23 @@ public class MainPanel extends javax.swing.JPanel {
         jTabbedPane2.addTab("Process list", jPanel1);
 
         add(jTabbedPane2);
-        jTabbedPane2.setBounds(10, 39, 800, 253);
+        jTabbedPane2.setBounds(10, 39, 890, 253);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTextArea1.setRows(5);
-        jTextArea1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(57, 183, 112), 1, true));
-        jTextArea1.setEnabled(false);
-        jScrollPane4.setViewportView(jTextArea1);
+        displayTA.setEditable(false);
+        displayTA.setColumns(20);
+        displayTA.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        displayTA.setRows(5);
+        displayTA.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(57, 183, 112), 1, true));
+        jScrollPane4.setViewportView(displayTA);
 
         add(jScrollPane4);
         jScrollPane4.setBounds(240, 330, 550, 140);
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(57, 183, 112), 1, true));
-        jTextField1.setEnabled(false);
-        add(jTextField1);
-        jTextField1.setBounds(240, 500, 550, 42);
+        keyboardTF.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        keyboardTF.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(57, 183, 112), 1, true));
+        keyboardTF.setEnabled(false);
+        add(keyboardTF);
+        keyboardTF.setBounds(240, 500, 550, 42);
 
         jPanel20.setBackground(new java.awt.Color(233, 233, 233));
 
@@ -236,8 +243,8 @@ public class MainPanel extends javax.swing.JPanel {
         jLabel9.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel9.setText("Processor time:");
 
-        jLabel10.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel10.setText("0");
+        processorTimeLabel.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        processorTimeLabel.setText("0");
 
         javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
         jPanel20.setLayout(jPanel20Layout);
@@ -254,7 +261,7 @@ public class MainPanel extends javax.swing.JPanel {
                     .addGroup(jPanel20Layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(processorTimeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel20Layout.setVerticalGroup(
@@ -263,7 +270,7 @@ public class MainPanel extends javax.swing.JPanel {
                 .addGap(6, 6, 6)
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jLabel10))
+                    .addComponent(processorTimeLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -314,8 +321,8 @@ public class MainPanel extends javax.swing.JPanel {
     public application.view.CPUCorePanel cPUCorePanel1;
     public application.view.CPUCorePanel cPUCorePanel2;
     public javax.swing.JLabel displayProcessID;
+    public javax.swing.JTextArea displayTA;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -326,6 +333,7 @@ public class MainPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -338,14 +346,14 @@ public class MainPanel extends javax.swing.JPanel {
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JToolBar jToolBar1;
     public javax.swing.JLabel keyboardProcessID;
+    public javax.swing.JTextField keyboardTF;
     public application.view.MemoryPanel mainMemoryPanel;
     public javax.swing.JButton nextButton;
     public javax.swing.JButton openFilesButton;
     public javax.swing.JPanel processListPanel;
+    public javax.swing.JLabel processorTimeLabel;
     public javax.swing.JButton runButton;
     public application.view.MemoryPanel virtualMemoryPanel;
     // End of variables declaration//GEN-END:variables

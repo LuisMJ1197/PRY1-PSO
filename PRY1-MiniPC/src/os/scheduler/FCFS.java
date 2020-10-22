@@ -18,9 +18,7 @@ public class FCFS implements Scheduler {
     
     public FCFS(IQueue<PCB> readyQueue) {
         this.readyQueue = readyQueue;
-        readyQueue.getList().forEach((pcb) -> {
-            pcb.getCpuNumber().setValue(Integer.toString(new Random().nextInt(2) + 1));
-        });
+
     }
     
     @Override
@@ -31,7 +29,10 @@ public class FCFS implements Scheduler {
 
     @Override
     public void remove(PCB processPCB) {
-        processPCB.getStatus().setValue(PCB.TERMINATED);
+        if (processPCB==null) {
+        } else {
+            processPCB.getStatus().setValue(PCB.TERMINATED);
+        }
     }
 
     @Override
@@ -46,12 +47,15 @@ public class FCFS implements Scheduler {
 
     @Override
     public PCB choose_next(int cpu) {
+        PCB pcbR = null;
         for (PCB pcb: this.readyQueue.getList()) {
             if (Integer.parseInt(pcb.getCpuNumber().getValue()) == cpu) {
-                return pcb;
+                pcbR = pcb;
+                break;
             }
         }
-        return null;
+        this.readyQueue.getList().remove(pcbR);
+        return pcbR;
     }
     
 }

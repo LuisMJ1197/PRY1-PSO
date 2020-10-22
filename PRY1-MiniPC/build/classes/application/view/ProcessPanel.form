@@ -27,8 +27,10 @@
               <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
               <Component id="pidLabel" min="-2" pref="19" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="nameLabel" min="-2" pref="51" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+              <Component id="nameLabel" min="-2" pref="85" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="cpuLabel" min="-2" pref="22" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="statusLabel" min="-2" pref="55" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="pcLabel" min="-2" pref="70" max="-2" attributes="0"/>
@@ -42,7 +44,7 @@
               <Component id="cxLabel" min="-2" pref="96" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="dxLabel" min="-2" pref="96" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -62,6 +64,7 @@
                       <Component id="bxLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cxLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="dxLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cpuLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -162,5 +165,13 @@
         </DimensionLayout>
       </Layout>
     </Container>
+    <Component class="javax.swing.JLabel" name="cpuLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="CPU"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
   </SubComponents>
 </Form>

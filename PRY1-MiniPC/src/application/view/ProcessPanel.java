@@ -42,6 +42,7 @@ public class ProcessPanel extends javax.swing.JPanel {
         cxLabel = new javax.swing.JLabel();
         dxLabel = new javax.swing.JLabel();
         colorPane = new javax.swing.JPanel();
+        cpuLabel = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(766, 25));
 
@@ -76,6 +77,8 @@ public class ProcessPanel extends javax.swing.JPanel {
             .addGap(0, 15, Short.MAX_VALUE)
         );
 
+        cpuLabel.setText("CPU");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -86,8 +89,10 @@ public class ProcessPanel extends javax.swing.JPanel {
                 .addGap(8, 8, 8)
                 .addComponent(pidLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
+                .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cpuLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pcLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -101,7 +106,7 @@ public class ProcessPanel extends javax.swing.JPanel {
                 .addComponent(cxLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(dxLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(41, 41, 41))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -118,7 +123,8 @@ public class ProcessPanel extends javax.swing.JPanel {
                         .addComponent(axLabel)
                         .addComponent(bxLabel)
                         .addComponent(cxLabel)
-                        .addComponent(dxLabel)))
+                        .addComponent(dxLabel)
+                        .addComponent(cpuLabel)))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -129,6 +135,7 @@ public class ProcessPanel extends javax.swing.JPanel {
     public javax.swing.JLabel axLabel;
     public javax.swing.JLabel bxLabel;
     private javax.swing.JPanel colorPane;
+    public javax.swing.JLabel cpuLabel;
     public javax.swing.JLabel cxLabel;
     public javax.swing.JLabel dxLabel;
     public javax.swing.JLabel nameLabel;

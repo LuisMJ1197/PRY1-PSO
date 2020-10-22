@@ -19,4 +19,6 @@ public interface IODevice {
     public void setControllerListener(IODeviceControllerListener listener);
     
     public void setListener(IODeviceListener listener);
+
+    public String getEntry();
 }

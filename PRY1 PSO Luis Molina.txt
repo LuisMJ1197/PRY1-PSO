@@ -1,0 +1,3 @@
+1er Proyceto del curso de Principios de Sistemas Operativos del 2° Semestre del 2020 de Ingeniería en Computación TEC.
+
+Link del repositorio: https://github.com/LuisMJ1197/PRY1-PSO.git

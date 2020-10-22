@@ -20,18 +20,21 @@ public class PARAM extends Instruction {
     public PARAM(Core core, String reg1) {
         this.core = core;
         this.reg1 = reg1;
+        this.height = IInstruction.PARAM;
     }
     
     public PARAM(Core core, String reg1, String reg2) {
         this.core = core;
         this.reg1 = reg1;
         this.reg1 = reg2;
+        this.height = IInstruction.PARAM;
     }
     
     public PARAM(Core core, String reg1, String reg2, String reg3) {
         this.core = core;
         this.reg1 = reg1;
         this.reg1 = reg2;
+        this.height = IInstruction.PARAM;
         this.reg1 = reg3;
     }
 

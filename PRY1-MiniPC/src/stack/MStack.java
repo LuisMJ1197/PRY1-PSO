@@ -20,7 +20,7 @@ public class MStack {
     }
     
     public int getMaxSize() {
-        return this.size;
+        return this.maxSize;
     }
     
     public int getSize() {
@@ -28,7 +28,7 @@ public class MStack {
     }
 
     public boolean push(Register element) {
-        if (this.size > this.stack.size()) {
+        if (this.maxSize >= this.stack.size()) {
             this.stack.add(0, element);
             return true;
         } else {

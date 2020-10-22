@@ -17,10 +17,10 @@ import os.process.PCB;
  */
 public class Core {
     private Register ir;
-    private PCB pcb;
+    private PCB pcb = null;
     private int zeroFlag = 0;
     private IInstruction executingInstruction;
-    private int number;
+    private final int number;
     
     public Core(int number) {
         this.number = number;
@@ -33,19 +33,30 @@ public class Core {
     public boolean nextCycle() {
         if (pcb == null) {
             this.pcb = Kernel.getInstance().getProcessor().nextProcess(number);
+            if (pcb != null) pcb.getStatus().setValue(PCB.RUNNING);
         } 
         if (this.pcb != null) {
-            if (this.executingInstruction != null) {
+            if (this.executingInstruction == null) {
+                this.nextInstruction();
+            }
+            if (this.executingInstruction == null) return false;
+            if (this.executingInstruction.getHeight() == -1 && !this.pcb.getStatus().getValue().equals(PCB.WAITING)) {
+                Kernel.getInstance().getProcessor().getScheduler().suspend(pcb);
+                this.executingInstruction.incrementExecutionTime();
+                this.executingInstruction.execute();
+            } else {
                 this.executingInstruction.incrementExecutionTime();
                 if (this.executingInstruction.isDone()) {
-                    if (!this.executingInstruction.execute()) {
-                        this.abortProcess();
-                    } else {
+                    if (this.executingInstruction.getHeight() == -1) {
                         this.nextInstruction();
+                    } else {
+                        if (!this.executingInstruction.execute()) {
+                            this.abortProcess();
+                        } else {
+                            this.nextInstruction();
+                        }
                     }
                 }
-            } else {
-                this.nextInstruction();
             }
             return true;
         }
@@ -81,7 +92,8 @@ public class Core {
     }
     
     public void abortProcess() {
-        this.pcb.getStatus().setValue(PCB.TERMINATED);
-        this.pcb = Kernel.getInstance().getProcessor().nextProcess(number);
+        Kernel.getInstance().getProcessor().getScheduler().remove(pcb);
+        pcb = null;
+        executingInstruction = null;
     }
 }
