@@ -21,7 +21,7 @@ class InstructionDecoder {
             return new STORE(core, getRegister(core, instruction.split(" ")[1]));
         } else if (instruction.contains("MOV")) {
             String firstReg = instruction.split(",")[0].split(" ")[1];
-            String secondReg = instruction.split(",")[0].trim();
+            String secondReg = instruction.split(",")[1].trim();
             return new MOV(core, getRegister(core, firstReg), getRegister(core, secondReg));
         } else if (instruction.contains("ADD")) {
             return new ADD(core, getRegister(core, instruction.split(" ")[1]));
@@ -41,7 +41,7 @@ class InstructionDecoder {
             return new JNE(core, Integer.parseInt(instruction.split(" ")[1]));
         } else if (instruction.contains("CMP")) {
             String firstReg = instruction.split(",")[0].split(" ")[1];
-            String secondReg = instruction.split(",")[0].trim();
+            String secondReg = instruction.split(",")[1].trim();
             return new CMP(core, getRegister(core, firstReg), getRegister(core, secondReg));
         } else if (instruction.contains("PUSH")) {
             return new PUSH(core, getRegister(core, instruction.split(" ")[1]));

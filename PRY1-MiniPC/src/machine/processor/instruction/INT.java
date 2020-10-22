@@ -9,6 +9,7 @@ import machine.Kernel;
 import machine.io.Display;
 import machine.io.IODeviceListener;
 import machine.processor.Core;
+import os.process.PCB;
 
 /**
  *
@@ -27,19 +28,19 @@ public class INT extends Instruction implements IODeviceListener {
         this.core = cpu;
     }
     
+    public String getProcessID() {
+        return this.core.getPCB().getPid().getValue();
+    }
+    
     @Override
     public boolean execute() {
         switch (value) {
             case PRINT:
                 ((Display) Kernel.getInstance().getDisplay()).addKey(core.getPCB().getDx().getValue());
-                Kernel.getInstance().getDisplay().setListener(this);
-                Kernel.getInstance().getDisplay().setBusy(Integer.parseInt(core.getPCB().getPid().getValue()));
-                this.movePc(1);
+                Kernel.getInstance().getDisplay().setBusy(Integer.parseInt(core.getPCB().getPid().getValue()), this);
                 break;
             case READ:
-                Kernel.getInstance().getKeyboard().setListener(this);
-                Kernel.getInstance().getKeyboard().setBusy(Integer.parseInt(core.getPCB().getPid().getValue()));
-                this.movePc(1);
+                Kernel.getInstance().getKeyboard().setBusy(Integer.parseInt(core.getPCB().getPid().getValue()), this);
                 break;
             case FINISH:
                 this.core.abortProcess();
@@ -54,12 +55,16 @@ public class INT extends Instruction implements IODeviceListener {
         switch (value) {
             case PRINT:
                 done = true;
+                this.core.getPCB().getStatus().setValue(PCB.RUNNING);
+                this.movePc(1);
                 break;
             case READ:
+                this.movePc(1);
                 done = true;
-                if (Integer.parseInt(result) > 255) {
+                if (result.isEmpty() || Integer.parseInt(result) > 255) {
                     this.core.abortProcess();
                 } else {
+                    this.core.getPCB().getStatus().setValue(PCB.RUNNING);
                     this.core.getPCB().getDx().setValue(result);
                 }
                 break;

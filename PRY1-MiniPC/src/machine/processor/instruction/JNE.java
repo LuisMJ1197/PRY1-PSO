@@ -25,8 +25,9 @@ public class JNE extends Instruction {
     public boolean execute() {
         if (this.core.getZeroFlag() == 0) {
             this.movePc(offset);
-        } 
-        this.movePc(1);
+        } else {
+            this.movePc(1);
+        }
         return true;
     }
 }

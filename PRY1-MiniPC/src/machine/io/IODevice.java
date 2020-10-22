@@ -5,6 +5,8 @@
  */
 package machine.io;
 
+import machine.processor.instruction.INT;
+
 /**
  *
  * @author Luism
@@ -12,7 +14,7 @@ package machine.io;
 public interface IODevice {
     public boolean isBusy();
     
-    public void setBusy(int value);
+    public void setBusy(int value, INT instr);
     
     public void reset();
     

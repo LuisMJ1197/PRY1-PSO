@@ -11,4 +11,5 @@ package machine.io;
  */
 public interface IODeviceControllerListener {
     public void start(int processID);
+    public void reset();
 }

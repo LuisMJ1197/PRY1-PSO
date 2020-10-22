@@ -41,8 +41,6 @@ public class KeyboardController implements KeyListener, IODeviceControllerListen
         if (this.keyboardTF.isEnabled()) {
             if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                 this.keyboard.reset();
-                this.keyboardTF.setEnabled(false);
-                this.keyboardTF.setText("");
             } else {
                 char keyChar = e.getKeyChar();
                 if (keyChar >= '0' && keyChar <= '9') {
@@ -61,5 +59,10 @@ public class KeyboardController implements KeyListener, IODeviceControllerListen
     public void start(int processID) {
         this.processID.setText(Integer.toString(processID));
         this.keyboardTF.setEnabled(true);
+    }
+    
+    public void reset() {
+        this.keyboardTF.setEnabled(false);
+        this.keyboardTF.setText("");
     }
 }

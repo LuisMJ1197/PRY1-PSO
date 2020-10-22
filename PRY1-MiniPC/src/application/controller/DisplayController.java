@@ -43,8 +43,6 @@ public class DisplayController implements KeyListener, IODeviceControllerListene
         if (this.enabled) {
             if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                 this.display.reset();
-                this.displayTA.setText("");
-                this.enabled = false;
             }
         }
     }
@@ -59,5 +57,10 @@ public class DisplayController implements KeyListener, IODeviceControllerListene
         this.processID.setText(Integer.toString(processID));
         this.displayTA.setText(this.display.getEntry());
         this.enabled = true;
+    }
+    
+    public void reset() {
+        this.displayTA.setEnabled(false);
+        this.enabled = false;
     }
 }

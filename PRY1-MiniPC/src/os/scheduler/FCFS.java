@@ -51,6 +51,7 @@ public class FCFS implements Scheduler {
         for (PCB pcb: this.readyQueue.getList()) {
             if (Integer.parseInt(pcb.getCpuNumber().getValue()) == cpu) {
                 pcbR = pcb;
+                pcbR.getStatus().setValue(PCB.RUNNING);
                 break;
             }
         }

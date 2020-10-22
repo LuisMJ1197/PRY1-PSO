@@ -20,6 +20,7 @@ public class ADD extends Instruction {
     public ADD(Core cpu, Register reg) {
         this.height = IInstruction.ADD;
         this.reg = reg;
+        this.core = cpu;
     }
     
     @Override

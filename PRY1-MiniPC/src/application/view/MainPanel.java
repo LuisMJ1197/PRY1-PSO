@@ -31,7 +31,6 @@ public class MainPanel extends javax.swing.JPanel {
         jToolBar1 = new javax.swing.JToolBar();
         openFilesButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
-        runButton = new javax.swing.JButton();
         nextButton = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         mainMemoryPanel = new application.view.MemoryPanel();
@@ -89,16 +88,6 @@ public class MainPanel extends javax.swing.JPanel {
         jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
         jToolBar1.add(jSeparator1);
-
-        runButton.setBackground(new java.awt.Color(53, 53, 53));
-        runButton.setForeground(new java.awt.Color(255, 255, 255));
-        runButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/images/play.png"))); // NOI18N
-        runButton.setText("Run");
-        runButton.setActionCommand("run");
-        runButton.setEnabled(false);
-        runButton.setFocusable(false);
-        runButton.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jToolBar1.add(runButton);
 
         nextButton.setBackground(new java.awt.Color(53, 53, 53));
         nextButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -354,7 +343,6 @@ public class MainPanel extends javax.swing.JPanel {
     public javax.swing.JButton openFilesButton;
     public javax.swing.JPanel processListPanel;
     public javax.swing.JLabel processorTimeLabel;
-    public javax.swing.JButton runButton;
     public application.view.MemoryPanel virtualMemoryPanel;
     // End of variables declaration//GEN-END:variables
 }

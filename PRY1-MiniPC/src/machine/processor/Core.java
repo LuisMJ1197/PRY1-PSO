@@ -33,6 +33,39 @@ public class Core {
     public boolean nextCycle() {
         if (pcb == null) {
             this.pcb = Kernel.getInstance().getProcessor().nextProcess(number);
+            if(this.pcb == null) return false;
+        }
+        if (this.executingInstruction == null) {
+            this.nextInstruction();
+            if (this.executingInstruction == null) return false;
+        }
+        if (this.executingInstruction.getHeight() == -1) { //Interrupt
+            if (!this.pcb.getStatus().getValue().equals(PCB.WAITING) && !this.executingInstruction.isDone()) { //If not waiting: interrup recent call
+                Kernel.getInstance().getProcessor().getScheduler().suspend(pcb);
+                this.executingInstruction.execute();
+                this.executingInstruction.incrementExecutionTime();
+            } else { //it is not a recent interrupt call
+                if (this.executingInstruction.isDone()) {
+                    this.nextInstruction(); // If interrupt is done, fetch next instruction
+                } else {
+                    this.executingInstruction.incrementExecutionTime();
+                }
+            }
+        } else { //Non Interrupt
+            this.executingInstruction.incrementExecutionTime();
+            if (this.executingInstruction.isDone()) { // Seconds have past
+                if (!this.executingInstruction.execute()) { // If there is a problem
+                    this.abortProcess(); //Abort
+                } else { // Otherwise
+                    this.nextInstruction(); //FetchNextInstruction
+                }
+            }
+        }
+        return true;
+    }
+    /*public boolean nextCycle() {
+        if (pcb == null) {
+            this.pcb = Kernel.getInstance().getProcessor().nextProcess(number);
             if (pcb != null) pcb.getStatus().setValue(PCB.RUNNING);
         } 
         if (this.pcb != null) {
@@ -61,18 +94,19 @@ public class Core {
             return true;
         }
         return false;
-    }
-    
+    }*/
     private void nextInstruction() {
         if (this.validatePC()) {
             String nextInstruction = Kernel.getInstance().getMMU().loadFromMemory(new Address(this.pcb.getPc().getValue()));
             this.executingInstruction = InstructionDecoder.decode(this, nextInstruction.toUpperCase());
         } else {
+            if (this.getPCB() == null) return;
             this.abortProcess();
         }
     }
     
     private boolean validatePC() {
+        if (this.getPCB() == null) return false;
         int pc = new Address(this.getPCB().getPc().getValue()).getOffset();
         int base = new Address(this.getPCB().getBase().getValue()).getOffset();
         int limit = base + Integer.parseInt(this.getPCB().getLimit().getValue());
@@ -93,7 +127,7 @@ public class Core {
     
     public void abortProcess() {
         Kernel.getInstance().getProcessor().getScheduler().remove(pcb);
-        pcb = null;
-        executingInstruction = null;
+        this.pcb = Kernel.getInstance().getProcessor().nextProcess(number);
+        this.nextInstruction();
     }
 }

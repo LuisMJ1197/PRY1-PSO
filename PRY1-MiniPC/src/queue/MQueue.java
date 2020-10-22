@@ -32,7 +32,10 @@ public class MQueue<E> implements IQueue<E> {
 
         @Override
     public E dequeue() {
-        return this.queue.remove(0);
+        if (this.queue.size() > 0)
+            return this.queue.remove(0);
+        else
+            return null;
     }
 
     @Override

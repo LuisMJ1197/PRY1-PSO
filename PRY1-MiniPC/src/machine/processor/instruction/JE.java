@@ -25,8 +25,9 @@ public class JE extends Instruction {
     public boolean execute() {
         if (this.core.getZeroFlag() == 1) {
             this.movePc(offset);
-        } 
-        this.movePc(1);
+        } else {
+            this.movePc(1);
+        }
         return true;
     }
 }

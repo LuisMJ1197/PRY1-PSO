@@ -55,8 +55,6 @@ public class MainFrameController implements ActionListener {
             case "openFiles":
                 this.openFiles();
                 break;
-            case "run":
-                break;
             case "next":
                 this.next();
                 break;
