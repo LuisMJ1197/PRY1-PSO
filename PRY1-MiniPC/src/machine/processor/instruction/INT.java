@@ -36,10 +36,12 @@ public class INT extends Instruction implements IODeviceListener {
     public boolean execute() {
         switch (value) {
             case PRINT:
+                this.core.getPCB().getListOfIO().setValue("00010000");
                 ((Display) Kernel.getInstance().getDisplay()).addKey(core.getPCB().getDx().getValue());
                 Kernel.getInstance().getDisplay().setBusy(Integer.parseInt(core.getPCB().getPid().getValue()), this);
                 break;
             case READ:
+                this.core.getPCB().getListOfIO().setValue("00000002");
                 Kernel.getInstance().getKeyboard().setBusy(Integer.parseInt(core.getPCB().getPid().getValue()), this);
                 break;
             case FINISH:

@@ -71,9 +71,9 @@ public class Processor {
     }
 
     public void nextCycle() {
-        this.time++;
         this.core1.nextCycle();
         this.core2.nextCycle();
+        this.time++;
     }
 
     public Core getCore1() {

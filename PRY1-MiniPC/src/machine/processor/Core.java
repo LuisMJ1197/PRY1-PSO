@@ -39,6 +39,7 @@ public class Core {
             this.nextInstruction();
             if (this.executingInstruction == null) return false;
         }
+        this.pcb.getExecutingTime().setValue(Integer.toString(Integer.parseInt(this.pcb.getExecutingTime().getValue()) + 1));
         if (this.executingInstruction.getHeight() == -1) { //Interrupt
             if (!this.pcb.getStatus().getValue().equals(PCB.WAITING) && !this.executingInstruction.isDone()) { //If not waiting: interrup recent call
                 Kernel.getInstance().getProcessor().getScheduler().suspend(pcb);
@@ -63,38 +64,7 @@ public class Core {
         }
         return true;
     }
-    /*public boolean nextCycle() {
-        if (pcb == null) {
-            this.pcb = Kernel.getInstance().getProcessor().nextProcess(number);
-            if (pcb != null) pcb.getStatus().setValue(PCB.RUNNING);
-        } 
-        if (this.pcb != null) {
-            if (this.executingInstruction == null) {
-                this.nextInstruction();
-            }
-            if (this.executingInstruction == null) return false;
-            if (this.executingInstruction.getHeight() == -1 && !this.pcb.getStatus().getValue().equals(PCB.WAITING)) {
-                Kernel.getInstance().getProcessor().getScheduler().suspend(pcb);
-                this.executingInstruction.incrementExecutionTime();
-                this.executingInstruction.execute();
-            } else {
-                this.executingInstruction.incrementExecutionTime();
-                if (this.executingInstruction.isDone()) {
-                    if (this.executingInstruction.getHeight() == -1) {
-                        this.nextInstruction();
-                    } else {
-                        if (!this.executingInstruction.execute()) {
-                            this.abortProcess();
-                        } else {
-                            this.nextInstruction();
-                        }
-                    }
-                }
-            }
-            return true;
-        }
-        return false;
-    }*/
+    
     private void nextInstruction() {
         if (this.validatePC()) {
             String nextInstruction = Kernel.getInstance().getMMU().loadFromMemory(new Address(this.pcb.getPc().getValue()));

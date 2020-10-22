@@ -6,6 +6,7 @@
 package os.scheduler;
 
 import java.util.Random;
+import machine.Kernel;
 import os.process.PCB;
 import queue.IQueue;
 
@@ -52,6 +53,7 @@ public class FCFS implements Scheduler {
             if (Integer.parseInt(pcb.getCpuNumber().getValue()) == cpu) {
                 pcbR = pcb;
                 pcbR.getStatus().setValue(PCB.RUNNING);
+                pcbR.getStartTime().setValue(Integer.toString(Kernel.getInstance().getProcessor().getProcessTime()));
                 break;
             }
         }

@@ -285,7 +285,7 @@ public class MainPanel extends javax.swing.JPanel {
         jLabel7.setBounds(240, 480, 110, 15);
 
         jLabel11.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jLabel11.setText("Monitor    ID: 0001");
+        jLabel11.setText("Display    ID: 0001");
         add(jLabel11);
         jLabel11.setBounds(240, 310, 110, 15);
 
