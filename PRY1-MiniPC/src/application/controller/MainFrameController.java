@@ -150,12 +150,18 @@ public class MainFrameController implements ActionListener {
     }
 
     private void next() {
-        Kernel.getInstance().getProcessor().nextCycle();
+        if (Kernel.getInstance().getProcessor().nextCycle()) {
+            displaySummary();
+        }
         this.processPanelController.update();
         this.mainMemoryPanelController.update();
         this.diskMemoryPanelController.update();
         this.cpuCore1Controller.update();
         this.cpuCore2Controller.update();
         this.view.mainPanel.processorTimeLabel.setText(Integer.toString(Kernel.getInstance().getProcessor().getProcessTime()));
+    }
+    
+    private void displaySummary() {
+        
     }
 }

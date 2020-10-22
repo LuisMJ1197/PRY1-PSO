@@ -65,6 +65,9 @@ public class MainPanel extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         keyboardProcessID = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
+        jTabbedPane3 = new javax.swing.JTabbedPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        summaryPanel = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(233, 233, 233));
         setPreferredSize(new java.awt.Dimension(1221, 735));
@@ -268,11 +271,11 @@ public class MainPanel extends javax.swing.JPanel {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cPUCorePanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         add(jPanel20);
-        jPanel20.setBounds(10, 298, 214, 280);
+        jPanel20.setBounds(10, 298, 214, 250);
 
         displayProcessID.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         displayProcessID.setText("-1");
@@ -303,6 +306,16 @@ public class MainPanel extends javax.swing.JPanel {
         jLabel19.setText("Process id:");
         add(jLabel19);
         jLabel19.setBounds(350, 480, 60, 15);
+
+        jTabbedPane3.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+
+        summaryPanel.setLayout(new java.awt.GridLayout());
+        jScrollPane2.setViewportView(summaryPanel);
+
+        jTabbedPane3.addTab("Estadísticas", jScrollPane2);
+
+        add(jTabbedPane3);
+        jTabbedPane3.setBounds(10, 550, 890, 170);
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -331,10 +344,12 @@ public class MainPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JToolBar jToolBar1;
     public javax.swing.JLabel keyboardProcessID;
     public javax.swing.JTextField keyboardTF;
@@ -343,6 +358,7 @@ public class MainPanel extends javax.swing.JPanel {
     public javax.swing.JButton openFilesButton;
     public javax.swing.JPanel processListPanel;
     public javax.swing.JLabel processorTimeLabel;
+    public javax.swing.JPanel summaryPanel;
     public application.view.MemoryPanel virtualMemoryPanel;
     // End of variables declaration//GEN-END:variables
 }

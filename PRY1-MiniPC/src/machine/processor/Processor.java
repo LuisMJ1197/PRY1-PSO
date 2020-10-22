@@ -70,10 +70,13 @@ public class Processor {
         return this.processList;
     }
 
-    public void nextCycle() {
-        this.core1.nextCycle();
-        this.core2.nextCycle();
+    public boolean nextCycle() {
+        if (this.core1.nextCycle() &&
+            this.core2.nextCycle()) {
+            return false;
+        }
         this.time++;
+        return true;
     }
 
     public Core getCore1() {
