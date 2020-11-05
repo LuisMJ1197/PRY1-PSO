@@ -71,8 +71,9 @@ public class Processor {
     }
 
     public boolean nextCycle() {
-        if (this.core1.nextCycle() &&
-            this.core2.nextCycle()) {
+        boolean c1 = this.core1.nextCycle();
+        boolean c2 = this.core2.nextCycle();
+        if (c1 && c2) {
             return false;
         }
         this.time++;
@@ -94,5 +95,4 @@ public class Processor {
     public Scheduler getScheduler() {
         return this.scheduler;
     }
-    
 }
